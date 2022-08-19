@@ -1,0 +1,8 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven { url = uri("https://maven.hq.hydraulic.software") }
+    }
+}
+
+rootProject.name = "javafx-app"
