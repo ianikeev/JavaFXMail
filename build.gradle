@@ -24,7 +24,7 @@ tasks.withType(JavaCompile) {
 
 application {
     mainModule = 'xyz.twoladsandacat.javafxmail'
-    mainClass = 'xyz.twoladsandacat.javafxmail.HelloApplication'
+    mainClass = 'xyz.twoladsandacat.javafxmail.Launcher'
 }
 
 javafx {
