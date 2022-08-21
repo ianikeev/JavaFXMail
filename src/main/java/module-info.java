@@ -4,5 +4,6 @@ module xyz.twoladsandacat.javafxmail {
 
 
     opens xyz.twoladsandacat.javafxmail to javafx.fxml;
+    opens xyz.twoladsandacat.javafxmail.view;
     exports xyz.twoladsandacat.javafxmail;
 }
