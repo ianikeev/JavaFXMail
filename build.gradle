@@ -10,6 +10,9 @@ version '1.0'
 
 repositories {
     mavenCentral()
+    maven {
+        url 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
+    }
 }
 
 java {
@@ -25,6 +28,10 @@ tasks.withType(JavaCompile) {
 application {
     mainModule = 'xyz.twoladsandacat.javafxmail'
     mainClass = 'xyz.twoladsandacat.javafxmail.Launcher'
+}
+
+dependencies {
+    implementation 'io.github.mkpaz:atlantafx-base:0.1.0-SNAPSHOT'
 }
 
 javafx {

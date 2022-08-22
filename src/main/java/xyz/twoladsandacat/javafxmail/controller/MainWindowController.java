@@ -1,5 +1,6 @@
 package xyz.twoladsandacat.javafxmail.controller;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeView;
@@ -24,7 +25,17 @@ public class MainWindowController extends BaseController {
 
     @FXML
     void optionsAction() {
+        viewFactory.showOptionsWindow();
+    }
 
+    @FXML
+    void addAccountAction() {
+        viewFactory.showLoginWindow();
+    }
+
+    @FXML
+    void quitApplicationAction() {
+        Platform.exit();
     }
 
 }
