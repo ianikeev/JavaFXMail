@@ -34,9 +34,9 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <SplitPane dividerPositions="0.22444889779559113" orientation="HORIZONTAL" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
+        <SplitPane dividerPositions="0.3" orientation="HORIZONTAL" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
         <TreeView fx:id="emailsTreeView" />
-        <SplitPane dividerPositions="0.3233240223463687" orientation="VERTICAL">
+        <SplitPane dividerPositions="0.35" orientation="VERTICAL">
             <TableView fx:id="emailsTableView" layoutX="210.0" layoutY="26.0" prefHeight="200.0" prefWidth="590.0" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
                 <columns>
                     <TableColumn prefWidth="75.0" text="Sender" />

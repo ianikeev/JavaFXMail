@@ -57,7 +57,7 @@ public class OptionsWindowController extends BaseController implements Initializ
         fontSizePicker.setSnapToTicks(true);
         fontSizePicker.setShowTickMarks(true);
         fontSizePicker.setShowTickLabels(true);
-        fontSizePicker.setLabelFormatter(new StringConverter<Double>() {
+        fontSizePicker.setLabelFormatter(new StringConverter<>() {
             @Override
             public String toString(Double object) {
                 int i = object.intValue();
@@ -69,9 +69,8 @@ public class OptionsWindowController extends BaseController implements Initializ
                 return null;
             }
         });
-        fontSizePicker.valueProperty().addListener((obs, oldVal, newVal) -> {
-            fontSizePicker.setValue(newVal.intValue());
-        });
+        fontSizePicker.valueProperty().addListener((obs, oldVal, newVal) ->
+                fontSizePicker.setValue(newVal.intValue()));
     }
 
     private void setUpThemePicker() {

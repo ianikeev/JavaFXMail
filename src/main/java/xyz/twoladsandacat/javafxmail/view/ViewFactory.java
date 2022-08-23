@@ -1,5 +1,7 @@
 package xyz.twoladsandacat.javafxmail.view;
 
+import atlantafx.base.theme.PrimerDark;
+import atlantafx.base.theme.PrimerLight;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,8 +12,6 @@ import xyz.twoladsandacat.javafxmail.controller.BaseController;
 import xyz.twoladsandacat.javafxmail.controller.LoginWindowController;
 import xyz.twoladsandacat.javafxmail.controller.MainWindowController;
 import xyz.twoladsandacat.javafxmail.controller.OptionsWindowController;
-import atlantafx.base.theme.PrimerLight;
-import atlantafx.base.theme.PrimerDark;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,12 +19,12 @@ import java.util.Objects;
 
 public class ViewFactory {
 
-    private EmailManager emailManager;
-    private ArrayList<Stage> activeStages;
+    private final EmailManager emailManager;
+    private final ArrayList<Stage> activeStages;
 
     public ViewFactory(EmailManager emailManager) {
         this.emailManager = emailManager;
-        activeStages = new ArrayList<Stage>();
+        activeStages = new ArrayList<>();
     }
 
     // View options handling:

@@ -3,6 +3,8 @@ module xyz.twoladsandacat.javafxmail {
     requires javafx.fxml;
     requires javafx.web;
     requires atlantafx.base;
+    requires jakarta.activation;
+    requires jakarta.mail;
 
 
     opens xyz.twoladsandacat.javafxmail;
