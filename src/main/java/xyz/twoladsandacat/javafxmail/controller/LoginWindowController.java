@@ -27,22 +27,31 @@ public class LoginWindowController extends BaseController {
 
     @FXML
     void loginButtonAction() {
+        System.out.println("Login button action invoked");
         if (fieldsAreValid()) {
             EmailAccount emailAccount = new EmailAccount(emailAddressField.getText(), passwordField.getText());
             LoginService loginService = new LoginService(emailAccount, emailManager);
-            EmailLoginResult emailLoginResult = loginService.login();
+            loginService.start();
+            loginService.setOnSucceeded(event -> {
+                EmailLoginResult emailLoginResult = loginService.getValue();
+                switch (emailLoginResult) {
+                    case SUCCESS -> {
+                        System.out.println("Login successful for " + emailAccount);
+                        if (!viewFactory.isMainViewInitialized()) {
+                            viewFactory.showMainWindow();
+                        }
 
-            switch (emailLoginResult){
-                case SUCCESS -> System.out.println("Login successful for " + emailAccount);
-            }
+                        // Get the current stage. No built-in JavaFx method available
+                        Stage stage = (Stage) errorLabel.getScene().getWindow();
+                        viewFactory.closeStage(stage);
+                    }
+                    case FAILED_BY_CREDENTIALS -> System.out.println("Invalid credentials.");
+                    case FAILED_BY_UNEXPECTED_ERROR -> System.out.println("Unexpected error. Confused.");
+                    case FAILED_BY_NETWORK -> System.out.println("Network error.");
+                    default -> throw new IllegalStateException("Unexpected value: " + emailLoginResult);
+                }
+            });
         }
-        System.out.println("Login button action invoked");
-
-        viewFactory.showMainWindow();
-
-        // Get the current stage. No built-in JavaFx method available
-        Stage stage = (Stage) errorLabel.getScene().getWindow();
-        viewFactory.closeStage(stage);
     }
 
     private boolean fieldsAreValid() {
@@ -56,5 +65,4 @@ public class LoginWindowController extends BaseController {
         }
         return true;
     }
-
 }

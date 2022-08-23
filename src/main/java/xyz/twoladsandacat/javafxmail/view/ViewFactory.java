@@ -15,12 +15,12 @@ import xyz.twoladsandacat.javafxmail.controller.OptionsWindowController;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class ViewFactory {
 
     private final EmailManager emailManager;
     private final ArrayList<Stage> activeStages;
+    private boolean mainViewInitialized = false;
 
     public ViewFactory(EmailManager emailManager) {
         this.emailManager = emailManager;
@@ -55,12 +55,17 @@ public class ViewFactory {
         initializeStage(controller);
     }
 
+    public boolean isMainViewInitialized() {
+        return mainViewInitialized;
+    }
+
     public void showMainWindow() {
         System.out.println("show main window called");
 
         BaseController controller = new MainWindowController(emailManager, this,
                 "/xyz/twoladsandacat/javafxmail/view/MainWindow.fxml");
         initializeStage(controller);
+        mainViewInitialized = true;
     }
 
     public void showOptionsWindow() {

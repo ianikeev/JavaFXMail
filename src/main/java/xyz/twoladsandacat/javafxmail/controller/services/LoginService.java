@@ -1,11 +1,13 @@
 package xyz.twoladsandacat.javafxmail.controller.services;
 
 import jakarta.mail.*;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import xyz.twoladsandacat.javafxmail.EmailManager;
 import xyz.twoladsandacat.javafxmail.controller.EmailLoginResult;
 import xyz.twoladsandacat.javafxmail.model.EmailAccount;
 
-public class LoginService {
+public class LoginService extends Service<EmailLoginResult> {
     EmailAccount emailAccount;
     EmailManager emailManager;
 
@@ -14,7 +16,7 @@ public class LoginService {
         this.emailManager = emailManager;
     }
 
-    public EmailLoginResult login() {
+    private EmailLoginResult login() {
         Authenticator authenticator = new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -28,20 +30,27 @@ public class LoginService {
             store.connect(emailAccount.getProperties().getProperty("incomingHost"),
                     emailAccount.getAddress(), emailAccount.getPassword());
             emailAccount.setStore(store);
+            emailManager.addEmailAccount(emailAccount);
         } catch (NoSuchProviderException e) {
             e.printStackTrace();
             return EmailLoginResult.FAILED_BY_NETWORK;
         } catch (AuthenticationFailedException e) {
             e.printStackTrace();
             return EmailLoginResult.FAILED_BY_CREDENTIALS;
-        } catch (MessagingException e) {
-            e.printStackTrace();
-            return EmailLoginResult.FAILED_BY_UNEXPECTED_ERROR;
         } catch (Exception e) {
             e.printStackTrace();
             return EmailLoginResult.FAILED_BY_UNEXPECTED_ERROR;
         }
         return EmailLoginResult.SUCCESS;
+    }
 
+    @Override
+    protected Task<EmailLoginResult> createTask() {
+        return new Task<>() {
+            @Override
+            protected EmailLoginResult call() {
+                return login();
+            }
+        };
     }
 }

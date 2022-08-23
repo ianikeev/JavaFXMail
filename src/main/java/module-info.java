@@ -9,7 +9,9 @@ module xyz.twoladsandacat.javafxmail {
 
     opens xyz.twoladsandacat.javafxmail;
     opens xyz.twoladsandacat.javafxmail.controller;
+    opens xyz.twoladsandacat.javafxmail.model;
     opens xyz.twoladsandacat.javafxmail.view;
 
     exports xyz.twoladsandacat.javafxmail;
+    exports xyz.twoladsandacat.javafxmail.model;
 }
