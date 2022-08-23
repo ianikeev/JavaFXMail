@@ -39,11 +39,11 @@
         <SplitPane dividerPositions="0.35" orientation="VERTICAL">
             <TableView fx:id="emailsTableView" layoutX="210.0" layoutY="26.0" prefHeight="200.0" prefWidth="590.0" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
                 <columns>
-                    <TableColumn prefWidth="75.0" text="Sender" />
-                    <TableColumn prefWidth="124.0" text="Recipient" />
-                    <TableColumn prefWidth="260.0" text="Subject" />
-                    <TableColumn minWidth="0.0" prefWidth="61.60003662109375" text="Size" />
-                    <TableColumn minWidth="0.0" prefWidth="67.20001220703125" text="Date" />
+                    <TableColumn fx:id="senderCol" prefWidth="75.0" text="Sender" />
+                    <TableColumn fx:id="recipientCol" prefWidth="124.0" text="Recipient" />
+                    <TableColumn fx:id="subjectCol" prefWidth="260.0" text="Subject" />
+                    <TableColumn fx:id="sizeCol" minWidth="0.0" prefWidth="61.60003662109375" text="Size" />
+                    <TableColumn fx:id="dateCol" minWidth="0.0" prefWidth="67.20001220703125" text="Date" />
                 </columns>
             </TableView>
             <WebView fx:id="emailWebView" layoutX="210.0" layoutY="226.0" prefHeight="375.0" prefWidth="590.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="227.0" />
