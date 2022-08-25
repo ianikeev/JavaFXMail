@@ -1,11 +1,11 @@
 module xyz.twoladsandacat.javafxmail {
+    requires atlantafx.base;
+    requires com.jthemedetector;
+    requires jakarta.activation;
+    requires jakarta.mail;
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
-    requires atlantafx.base;
-    requires jakarta.activation;
-    requires jakarta.mail;
-
 
     opens xyz.twoladsandacat.javafxmail;
     opens xyz.twoladsandacat.javafxmail.controller;

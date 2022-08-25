@@ -15,6 +15,7 @@ import xyz.twoladsandacat.javafxmail.controller.OptionsWindowController;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class ViewFactory {
 
@@ -25,6 +26,7 @@ public class ViewFactory {
     public ViewFactory(EmailManager emailManager) {
         this.emailManager = emailManager;
         activeStages = new ArrayList<>();
+        this.colorTheme = colorTheme;
     }
 
     // View options handling:
