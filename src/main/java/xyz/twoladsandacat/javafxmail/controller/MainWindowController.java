@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.web.WebView;
 import javafx.util.Callback;
 import xyz.twoladsandacat.javafxmail.EmailManager;
+import xyz.twoladsandacat.javafxmail.controller.services.MessageRendererService;
 import xyz.twoladsandacat.javafxmail.model.EmailMessage;
 import xyz.twoladsandacat.javafxmail.model.EmailTreeItem;
 import xyz.twoladsandacat.javafxmail.model.SizeInteger;
@@ -21,9 +22,6 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class MainWindowController extends BaseController implements Initializable {
-
-    @FXML
-    private WebView emailWebView;
 
     @FXML
     private TableView<EmailMessage> emailsTableView;
@@ -43,6 +41,9 @@ public class MainWindowController extends BaseController implements Initializabl
     @FXML
     private TableColumn<EmailMessage, Date> dateCol;
 
+    @FXML
+    private WebView emailWebView;
+    private MessageRendererService messageRendererService;
 
     @FXML
     private TreeView<String> emailsTreeView;
@@ -72,6 +73,22 @@ public class MainWindowController extends BaseController implements Initializabl
         setUpEmailTableView();
         setUpFolderSelection();
         setUpBoldRows();
+        setUpMessageRendererService();
+        setUpMessageSelection();
+    }
+
+    private void setUpMessageSelection() {
+        emailsTableView.setOnMouseClicked(event -> {
+            EmailMessage emailMessage = emailsTableView.getSelectionModel().getSelectedItem();
+            if (emailMessage != null) {
+                messageRendererService.setEmailMessage(emailMessage);
+                messageRendererService.restart();
+            }
+        });
+    }
+
+    private void setUpMessageRendererService() {
+        messageRendererService = new MessageRendererService(emailWebView.getEngine());
     }
 
     private void setUpBoldRows() {
