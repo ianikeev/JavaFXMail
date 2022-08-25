@@ -13,6 +13,7 @@ import javafx.util.Callback;
 import xyz.twoladsandacat.javafxmail.EmailManager;
 import xyz.twoladsandacat.javafxmail.model.EmailMessage;
 import xyz.twoladsandacat.javafxmail.model.EmailTreeItem;
+import xyz.twoladsandacat.javafxmail.model.SizeInteger;
 import xyz.twoladsandacat.javafxmail.view.ViewFactory;
 
 import java.net.URL;
@@ -34,7 +35,7 @@ public class MainWindowController extends BaseController implements Initializabl
     private TableColumn<EmailMessage, String> senderCol;
 
     @FXML
-    private TableColumn<EmailMessage, Integer> sizeCol;
+    private TableColumn<EmailMessage, SizeInteger> sizeCol;
 
     @FXML
     private TableColumn<EmailMessage, String> subjectCol;
@@ -107,7 +108,7 @@ public class MainWindowController extends BaseController implements Initializabl
         senderCol.setCellValueFactory(new PropertyValueFactory<EmailMessage, String>("sender"));
         recipientCol.setCellValueFactory(new PropertyValueFactory<EmailMessage, String>("recipient"));
         subjectCol.setCellValueFactory(new PropertyValueFactory<EmailMessage, String>("subject"));
-        sizeCol.setCellValueFactory(new PropertyValueFactory<EmailMessage, Integer>("size"));
+        sizeCol.setCellValueFactory(new PropertyValueFactory<EmailMessage, SizeInteger>("size"));
         dateCol.setCellValueFactory(new PropertyValueFactory<EmailMessage, Date>("date"));
     }
 
