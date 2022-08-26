@@ -7,6 +7,7 @@ import jakarta.mail.internet.MimeMessage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
+import xyz.twoladsandacat.javafxmail.EmailManager;
 
 public class EmailTreeItem<String> extends TreeItem<String> {
 
@@ -25,6 +26,16 @@ public class EmailTreeItem<String> extends TreeItem<String> {
     }
 
     public void addEmail(Message message) throws MessagingException {
+        EmailMessage emailMessage = fetchEmail(message);
+        emailMessages.add(emailMessage);
+    }
+
+    public void addEmailToTop(Message message) throws MessagingException {
+        EmailMessage emailMessage = fetchEmail(message);
+        emailMessages.add(0, emailMessage);
+    }
+
+    private EmailMessage fetchEmail(Message message) throws MessagingException {
         boolean messageIsRead = message.getFlags().contains(Flags.Flag.SEEN);
         EmailMessage emailMessage = new EmailMessage(
                 message.getSubject(),
@@ -35,10 +46,10 @@ public class EmailTreeItem<String> extends TreeItem<String> {
                 messageIsRead,
                 message
         );
-        emailMessages.add(emailMessage);
         if (!messageIsRead) {
             incrementMessagesCount();
         }
+        return emailMessage;
     }
 
     public void incrementMessagesCount() {

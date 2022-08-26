@@ -1,6 +1,7 @@
 package xyz.twoladsandacat.javafxmail.controller.services;
 
 import jakarta.mail.Folder;
+import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
 import jakarta.mail.Store;
 import jakarta.mail.event.MessageCountEvent;
@@ -58,7 +59,14 @@ public class FetchFoldersService extends Service<Void> {
         folder.addMessageCountListener(new MessageCountListener() {
             @Override
             public void messagesAdded(MessageCountEvent e) {
-
+                for (int i = 0; i < e.getMessages().length; i++) {
+                    try {
+                        Message message = folder.getMessage(folder.getMessageCount() - i);
+                        emailTreeItem.addEmailToTop(message);
+                    } catch (MessagingException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
             }
 
             @Override
