@@ -8,11 +8,13 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <MenuBar prefHeight="26.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <MenuBar prefHeight="26.0" prefWidth="960.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
@@ -35,8 +37,8 @@
             </menus>
         </MenuBar>
         <SplitPane dividerPositions="0.3" orientation="HORIZONTAL" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
-        <TreeView fx:id="emailsTreeView" />
-        <SplitPane dividerPositions="0.35" orientation="VERTICAL">
+        <TreeView fx:id="emailsTreeView" SplitPane.resizableWithParent="false" />
+        <SplitPane dividerPositions="0.35" orientation="VERTICAL" SplitPane.resizableWithParent="false">
             <TableView fx:id="emailsTableView" layoutX="210.0" layoutY="26.0" prefHeight="200.0" prefWidth="590.0" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
                 <columns>
                     <TableColumn fx:id="senderCol" prefWidth="75.0" text="Sender" />
@@ -49,5 +51,6 @@
             <WebView fx:id="emailWebView" layoutX="210.0" layoutY="226.0" prefHeight="375.0" prefWidth="590.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="227.0" />
         </SplitPane>
         </SplitPane>
+        </VBox>
     </children>
 </AnchorPane>
